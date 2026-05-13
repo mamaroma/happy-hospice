@@ -1,0 +1,43 @@
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+
+# JetBrains
+*.iml
+
+
+# Logs
+*.log
+
+# Temporary files
+tmp/
+temp/
+
+# Node modules (если появятся)
+node_modules/
+
+# Build / cache
+dist/
+build/
+.cache/
+
+# Archive artifacts
+*.zip
+*.tar
+*.gz
+
+# macOS archive metadata
+__MACOSX/
+
+# Env files
+.env
+.env.local
+
+# OS generated
+Desktop.ini
