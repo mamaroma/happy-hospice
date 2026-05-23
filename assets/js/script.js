@@ -86,4 +86,55 @@
             if (e.key === 'ArrowRight') show(1);
         });
     }
+
+    // ---------- Lightbox для дипломов ----------
+    const qualGrid = document.querySelector('.qual-grid');
+    const qualLightbox = document.getElementById('qualLightbox');
+    const qualLightboxImage = document.getElementById('qualLightboxImage');
+    const qualLightboxClose = document.getElementById('qualLightboxClose');
+    const qualLightboxPrev = document.getElementById('qualLightboxPrev');
+    const qualLightboxNext = document.getElementById('qualLightboxNext');
+
+    if (qualGrid && qualLightbox && qualLightboxImage) {
+        const qualItems = Array.from(qualGrid.querySelectorAll('.qual-item img'));
+        let qualIndex = 0;
+
+        function openQualLightbox(index) {
+            qualIndex = index;
+            qualLightboxImage.src = qualItems[qualIndex].src;
+            qualLightboxImage.alt = qualItems[qualIndex].alt || '';
+            qualLightbox.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeQualLightbox() {
+            qualLightbox.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        function showQual(delta) {
+            qualIndex = (qualIndex + delta + qualItems.length) % qualItems.length;
+            qualLightboxImage.src = qualItems[qualIndex].src;
+            qualLightboxImage.alt = qualItems[qualIndex].alt || '';
+        }
+
+        qualGrid.querySelectorAll('.qual-item').forEach((item, idx) => {
+            item.addEventListener('click', () => openQualLightbox(idx));
+        });
+
+        qualLightboxClose && qualLightboxClose.addEventListener('click', closeQualLightbox);
+        qualLightboxPrev && qualLightboxPrev.addEventListener('click', () => showQual(-1));
+        qualLightboxNext && qualLightboxNext.addEventListener('click', () => showQual(1));
+
+        qualLightbox.addEventListener('click', (e) => {
+            if (e.target === qualLightbox) closeQualLightbox();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (!qualLightbox.classList.contains('open')) return;
+            if (e.key === 'Escape') closeQualLightbox();
+            if (e.key === 'ArrowLeft') showQual(-1);
+            if (e.key === 'ArrowRight') showQual(1);
+        });
+    }
 })();

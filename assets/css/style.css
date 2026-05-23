@@ -1149,6 +1149,54 @@ img {
 }
 
 /* ============================================
+   QUALIFICATION GRID
+   ============================================ */
+.qual-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.qual-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition), box-shadow var(--transition);
+    aspect-ratio: 4/3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.qual-item:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.qual-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform var(--transition);
+}
+
+.qual-item:hover img {
+    transform: scale(1.03);
+}
+
+@media (max-width: 900px) {
+    .qual-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 540px) {
+    .qual-grid { grid-template-columns: 1fr; }
+}
+
+/* ============================================
    DOWNLOAD BLOCK
    ============================================ */
 .section-download {

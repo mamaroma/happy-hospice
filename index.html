@@ -30,6 +30,7 @@
             <nav class="nav" id="nav">
                 <a href="#locations">Наши дома</a>
                 <a href="#leaders">Руководители</a>
+                <a href="#qualification">Квалификация</a>
                 <a href="#contacts">Контакты</a>
             </nav>
 
@@ -223,6 +224,59 @@
         </div>
     </section>
 
+    <!-- QUALIFICATION -->
+    <section class="section section-soft" id="qualification">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-eyebrow">Наши специалисты</span>
+                <h2 class="section-title">Квалификация персонала</h2>
+                <div class="divider"><span class="divider-dot"></span></div>
+                <p class="section-subtitle">
+                    Наши сотрудники имеют профессиональное образование и регулярно повышают квалификацию, чтобы обеспечивать лучший уход за каждым подопечным.
+                </p>
+            </div>
+
+            <div class="qual-grid reveal">
+                <div class="qual-item" data-index="0"><img src="assets/img/qualification/diploma-01.jpg" alt="Диплом 1" loading="lazy"></div>
+                <div class="qual-item" data-index="1"><img src="assets/img/qualification/diploma-02.jpg" alt="Диплом 2" loading="lazy"></div>
+                <div class="qual-item" data-index="2"><img src="assets/img/qualification/diploma-03.jpg" alt="Диплом 3" loading="lazy"></div>
+                <div class="qual-item" data-index="3"><img src="assets/img/qualification/diploma-04.jpg" alt="Диплом 4" loading="lazy"></div>
+                <div class="qual-item" data-index="4"><img src="assets/img/qualification/diploma-05.jpg" alt="Диплом 5" loading="lazy"></div>
+                <div class="qual-item" data-index="5"><img src="assets/img/qualification/diploma-06.jpg" alt="Диплом 6" loading="lazy"></div>
+                <div class="qual-item" data-index="6"><img src="assets/img/qualification/diploma-07.jpg" alt="Диплом 7" loading="lazy"></div>
+                <div class="qual-item" data-index="7"><img src="assets/img/qualification/diploma-08.jpg" alt="Диплом 8" loading="lazy"></div>
+                <div class="qual-item" data-index="8"><img src="assets/img/qualification/diploma-09.jpg" alt="Диплом 9" loading="lazy"></div>
+                <div class="qual-item" data-index="9"><img src="assets/img/qualification/diploma-10.jpg" alt="Диплом 10" loading="lazy"></div>
+                <div class="qual-item" data-index="10"><img src="assets/img/qualification/diploma-11.png" alt="Диплом 11" loading="lazy"></div>
+                <div class="qual-item" data-index="11"><img src="assets/img/qualification/diploma-12.png" alt="Диплом 12" loading="lazy"></div>
+                <div class="qual-item" data-index="12"><img src="assets/img/qualification/diploma-13.png" alt="Диплом 13" loading="lazy"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIGHTBOX QUAL -->
+    <div class="lightbox" id="qualLightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" id="qualLightboxClose" aria-label="Закрыть">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+            <button class="lightbox-prev" id="qualLightboxPrev" aria-label="Назад">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <polyline points="15 18 9 12 15 6"/>
+                </svg>
+            </button>
+            <button class="lightbox-next" id="qualLightboxNext" aria-label="Вперёд">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <polyline points="9 18 15 12 9 6"/>
+                </svg>
+            </button>
+            <img class="lightbox-image" id="qualLightboxImage" src="" alt="">
+        </div>
+    </div>
+
     <!-- CONTACTS -->
     <section class="section contacts" id="contacts">
         <div class="container">
@@ -336,15 +390,14 @@
                 <div class="download-text">
                     <span class="download-label">Питание</span>
                     <h3>Меню пансионата</h3>
-                    <p>Ознакомьтесь с нашим меню — разнообразное и вкусное питание для наших постояльцев</p>
+                    <p>Ознакомьтесь с нашим меню — разнообразное и вкусное питание для наших постояльцев — откроется в новом окне</p>
                 </div>
-                <a href="documents/menu.doc" download class="download-btn">
+                <a href="view-menu.html" target="_blank" class="download-btn">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                        <polyline points="7 10 12 15 17 10"/>
-                        <line x1="12" y1="15" x2="12" y2="3"/>
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                        <circle cx="12" cy="12" r="3"/>
                     </svg>
-                    Скачать меню
+                    Просмотреть меню
                 </a>
             </div>
         </div>
