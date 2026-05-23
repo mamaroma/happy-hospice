@@ -1149,6 +1149,113 @@ img {
 }
 
 /* ============================================
+   DOWNLOAD BLOCK
+   ============================================ */
+.section-download {
+    background: var(--bg-soft);
+    padding: 56px 0;
+    border-top: 1px solid var(--border);
+}
+
+.download-block {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 36px 40px;
+    box-shadow: var(--shadow-md);
+}
+
+.download-icon {
+    flex-shrink: 0;
+    width: 64px;
+    height: 64px;
+    background: var(--accent-soft);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-dark);
+}
+
+.download-icon svg {
+    width: 32px;
+    height: 32px;
+}
+
+.download-text {
+    flex: 1;
+}
+
+.download-label {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+}
+
+.download-text h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--text-dark);
+    margin-bottom: 6px;
+}
+
+.download-text p {
+    font-size: 15px;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+.download-btn {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    background: var(--accent);
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: var(--radius-full);
+    text-decoration: none;
+    transition: background var(--transition), box-shadow var(--transition), transform var(--transition);
+    box-shadow: 0 4px 14px rgba(184, 153, 104, 0.35);
+    white-space: nowrap;
+}
+
+.download-btn:hover {
+    background: var(--accent-dark);
+    box-shadow: 0 6px 20px rgba(184, 153, 104, 0.45);
+    transform: translateY(-1px);
+}
+
+.download-btn svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+    .download-block {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 28px 24px;
+        gap: 20px;
+    }
+
+    .download-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* ============================================
    REVEAL ON SCROLL
    ============================================ */
 .reveal {
