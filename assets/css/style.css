@@ -735,6 +735,7 @@ img {
 }
 
 .contacts-list-text span {
+    display: block;
     font-size: 14px;
     color: var(--text-muted);
 }
