@@ -528,19 +528,21 @@ img {
 .leaders {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
-    max-width: 1080px;
+    gap: 32px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
 .leader-card {
     background: var(--bg-card);
     border-radius: var(--radius-lg);
-    padding: 36px;
+    padding: 28px 28px 32px;
     text-align: center;
     box-shadow: var(--shadow-sm);
     transition: all var(--transition);
     border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
 }
 
 .leader-card:hover {
@@ -549,36 +551,39 @@ img {
 }
 
 .leader-photo {
-    width: 140px;
-    height: 140px;
-    border-radius: var(--radius-full);
-    margin: 0 auto 20px;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    border-radius: var(--radius-md);
+    margin: 0 0 22px;
     overflow: hidden;
-    background: var(--accent-soft);
-    border: 4px solid var(--bg-card);
-    box-shadow: 0 0 0 3px var(--accent-light), var(--shadow-md);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--accent-dark);
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
 }
 
 .leader-photo img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    object-position: center top;
+    display: block;
 }
 
 .leader-photo-placeholder {
     font-family: 'Playfair Display', serif;
-    font-size: 56px;
+    font-size: 72px;
     font-weight: 600;
     color: var(--accent-dark);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .leader-name {
-    font-size: 22px;
-    margin-bottom: 6px;
+    font-size: 24px;
+    margin-bottom: 8px;
     line-height: 1.3;
 }
 
