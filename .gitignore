@@ -41,3 +41,7 @@ __MACOSX/
 
 # OS generated
 Desktop.ini
+
+# Local source photo folders (not for deploy)
+bugri_new/
+stuff_pics/
