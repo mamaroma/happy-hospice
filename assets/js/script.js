@@ -137,4 +137,90 @@
             if (e.key === 'ArrowRight') showQual(1);
         });
     }
+
+    // ---------- Форма заявки → Google Sheets ----------
+    // После публикации Apps Script вставьте сюда URL веб-приложения:
+    const APPLICATION_FORM_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyui4xBeN8mQX54wxrRAfplvYpN6cXlyc_kypFdd9vq3aTi2hSMxIfi8VoNXShL1C5n/exec';
+
+    const applicationForm = document.getElementById('applicationForm');
+    const applicationStatus = document.getElementById('applicationStatus');
+    const applicationSubmit = document.getElementById('applicationSubmit');
+
+    if (applicationForm && applicationStatus && applicationSubmit) {
+        const fields = ['fio', 'birthDate', 'gender', 'phone', 'email', 'diagnosis'];
+
+        function setStatus(message, type) {
+            applicationStatus.textContent = message;
+            applicationStatus.classList.remove('is-success', 'is-error');
+            if (type) applicationStatus.classList.add(type);
+        }
+
+        function markValidity(el, ok) {
+            el.classList.toggle('invalid', !ok);
+        }
+
+        applicationForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const data = {
+                fio: applicationForm.fio.value.trim(),
+                birthDate: applicationForm.birthDate.value,
+                gender: applicationForm.gender.value,
+                phone: applicationForm.phone.value.trim(),
+                email: applicationForm.email.value.trim(),
+                diagnosis: applicationForm.diagnosis.value.trim(),
+                consent: applicationForm.consent.checked ? 'Да' : ''
+            };
+
+            let valid = true;
+            fields.forEach((name) => {
+                const el = applicationForm.elements[name];
+                const ok = Boolean(data[name]);
+                markValidity(el, ok);
+                if (!ok) valid = false;
+            });
+
+            const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email);
+            markValidity(applicationForm.email, emailOk);
+            if (!emailOk) valid = false;
+
+            markValidity(applicationForm.consent, applicationForm.consent.checked);
+            if (!applicationForm.consent.checked) valid = false;
+
+            if (!valid) {
+                setStatus('Проверьте, пожалуйста, заполнение всех обязательных полей.', 'is-error');
+                return;
+            }
+
+            if (!APPLICATION_FORM_SCRIPT_URL) {
+                setStatus('Форма пока не подключена к таблице. Сообщите администратору сайта.', 'is-error');
+                return;
+            }
+
+            applicationSubmit.disabled = true;
+            setStatus('Отправляем заявку…', null);
+
+            try {
+                const body = new URLSearchParams(data);
+
+                await fetch(APPLICATION_FORM_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: body.toString()
+                });
+
+                applicationForm.reset();
+                fields.forEach((name) => markValidity(applicationForm.elements[name], true));
+                markValidity(applicationForm.consent, true);
+                setStatus('Заявка отправлена. Мы свяжемся с Вами в ближайшее время.', 'is-success');
+            } catch (err) {
+                setStatus('Не удалось отправить заявку. Попробуйте ещё раз или позвоните нам.', 'is-error');
+            } finally {
+                applicationSubmit.disabled = false;
+            }
+        });
+    }
 })();
