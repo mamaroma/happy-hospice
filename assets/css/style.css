@@ -1541,11 +1541,11 @@ img {
     align-items: center;
     justify-content: center;
     padding: 12px 20px;
-    background: #2563eb;
+    background: #76558F;
     color: #fff;
     border: none;
     border-radius: var(--radius-full);
-    box-shadow: 0 10px 28px rgba(37, 99, 235, 0.32);
+    box-shadow: 0 10px 28px rgba(118, 85, 143, 0.35);
     font-size: 14px;
     font-weight: 600;
     text-decoration: none;
@@ -1554,9 +1554,9 @@ img {
 
 .news-fab:hover {
     color: #fff;
-    background: #1d4ed8;
+    background: #624775;
     transform: translateY(-2px);
-    box-shadow: 0 14px 32px rgba(37, 99, 235, 0.42);
+    box-shadow: 0 14px 32px rgba(118, 85, 143, 0.45);
 }
 
 @media (max-width: 600px) {
