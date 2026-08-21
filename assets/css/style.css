@@ -702,6 +702,7 @@ a.messenger:hover {
     justify-content: center;
     color: white;
     flex-shrink: 0;
+    overflow: hidden;
 }
 
 .messenger-icon svg {
@@ -709,9 +710,19 @@ a.messenger:hover {
     height: 14px;
 }
 
+.messenger-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
 .messenger-tg .messenger-icon { background: #2AABEE; }
 .messenger-wa .messenger-icon { background: #25D366; }
-.messenger-max .messenger-icon { background: #FF8800; font-weight: 700; font-size: 11px; }
+.messenger-max .messenger-icon {
+    background: transparent;
+    border-radius: 6px;
+}
 
 .contacts-decor {
     background: var(--bg-card);
