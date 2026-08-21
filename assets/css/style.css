@@ -1636,18 +1636,92 @@ img {
 
 .news-card-title {
     font-size: 26px;
-    margin-bottom: 10px;
+    margin-bottom: 16px;
 }
 
+.news-card-gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+.news-card-gallery img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+}
+
+.news-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.news-card-body p,
 .news-card-text {
     color: var(--text-body);
     margin: 0;
+    line-height: 1.7;
+}
+
+.news-subscribe {
+    text-align: center;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 28px 24px;
+    box-shadow: var(--shadow-sm);
+}
+
+.news-subscribe p {
+    margin: 0 0 18px;
+    color: var(--text-body);
+    font-size: 16px;
+}
+
+.news-subscribe-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    background: #76558F;
+    color: #fff;
+    border-radius: var(--radius-full);
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 8px 20px rgba(118, 85, 143, 0.28);
+    transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+
+.news-subscribe-btn:hover {
+    background: #624775;
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 12px 26px rgba(118, 85, 143, 0.38);
 }
 
 .news-empty {
     text-align: center;
     color: var(--text-muted);
     padding: 20px 0 10px;
+}
+
+@media (max-width: 600px) {
+    .news-card {
+        padding: 22px 18px;
+    }
+
+    .news-card-gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .news-card-title {
+        font-size: 22px;
+    }
 }
 
 /* ============================================
