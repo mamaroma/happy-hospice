@@ -177,21 +177,21 @@ img {
     display: flex;
     align-items: center;
     gap: 8px;
-    background: var(--accent);
-    color: var(--text-light);
+    background: #25D366;
+    color: #fff;
     padding: 10px 18px;
     border-radius: var(--radius-full);
     font-weight: 600;
     font-size: 15px;
-    box-shadow: 0 4px 12px rgba(184, 153, 104, 0.25);
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
     transition: all var(--transition);
 }
 
 .header-phone:hover {
-    background: var(--accent-dark);
-    color: var(--text-light);
+    background: #1ebe57;
+    color: #fff;
     transform: translateY(-1px);
-    box-shadow: 0 6px 18px rgba(184, 153, 104, 0.35);
+    box-shadow: 0 6px 18px rgba(37, 211, 102, 0.4);
 }
 
 .header-phone svg {
