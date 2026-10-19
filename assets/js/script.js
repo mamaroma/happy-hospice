@@ -138,89 +138,170 @@
         });
     }
 
-    // ---------- Форма заявки → Google Sheets ----------
-    // После публикации Apps Script вставьте сюда URL веб-приложения:
+    // ---------- Заявки → Google Sheets ----------
     const APPLICATION_FORM_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyui4xBeN8mQX54wxrRAfplvYpN6cXlyc_kypFdd9vq3aTi2hSMxIfi8VoNXShL1C5n/exec';
+
+    function markValidity(el, ok) {
+        if (!el) return;
+        el.classList.toggle('invalid', !ok);
+    }
+
+    function isValidPhone(value) {
+        const digits = String(value || '').replace(/\D/g, '');
+        return digits.length >= 10 && digits.length <= 11;
+    }
+
+    function setFormStatus(statusEl, message, type) {
+        if (!statusEl) return;
+        statusEl.textContent = message;
+        statusEl.classList.remove('is-success', 'is-error');
+        if (type) statusEl.classList.add(type);
+    }
+
+    async function submitLead({ fio, phone, consent, source }, { statusEl, submitBtn, form, fieldNames }) {
+        let valid = true;
+
+        const nameOk = Boolean(fio);
+        markValidity(form.elements.fio, nameOk);
+        if (!nameOk) valid = false;
+
+        const phoneOk = isValidPhone(phone);
+        markValidity(form.elements.phone, phoneOk);
+        if (!phoneOk) valid = false;
+
+        markValidity(form.elements.consent, consent);
+        if (!consent) valid = false;
+
+        if (!valid) {
+            setFormStatus(statusEl, 'Укажите имя, телефон и согласие на обработку данных.', 'is-error');
+            return false;
+        }
+
+        if (!APPLICATION_FORM_SCRIPT_URL) {
+            setFormStatus(statusEl, 'Форма пока не подключена к таблице. Сообщите администратору сайта.', 'is-error');
+            return false;
+        }
+
+        submitBtn.disabled = true;
+        setFormStatus(statusEl, 'Отправляем заявку…', null);
+
+        try {
+            const data = {
+                fio,
+                phone,
+                consent: 'Да',
+                source: source || 'form',
+                birthDate: '',
+                gender: '',
+                email: '',
+                diagnosis: ''
+            };
+
+            await fetch(APPLICATION_FORM_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams(data).toString()
+            });
+
+            form.reset();
+            (fieldNames || ['fio', 'phone']).forEach((name) => markValidity(form.elements[name], true));
+            markValidity(form.elements.consent, true);
+            setFormStatus(statusEl, 'Спасибо! Мы перезвоним Вам в ближайшее время.', 'is-success');
+            return true;
+        } catch (err) {
+            setFormStatus(statusEl, 'Не удалось отправить. Попробуйте ещё раз или позвоните нам.', 'is-error');
+            return false;
+        } finally {
+            submitBtn.disabled = false;
+        }
+    }
 
     const applicationForm = document.getElementById('applicationForm');
     const applicationStatus = document.getElementById('applicationStatus');
     const applicationSubmit = document.getElementById('applicationSubmit');
 
     if (applicationForm && applicationStatus && applicationSubmit) {
-        const fields = ['fio', 'birthDate', 'gender', 'phone', 'email', 'diagnosis'];
-
-        function setStatus(message, type) {
-            applicationStatus.textContent = message;
-            applicationStatus.classList.remove('is-success', 'is-error');
-            if (type) applicationStatus.classList.add(type);
-        }
-
-        function markValidity(el, ok) {
-            el.classList.toggle('invalid', !ok);
-        }
-
         applicationForm.addEventListener('submit', async (event) => {
             event.preventDefault();
-
-            const data = {
+            await submitLead({
                 fio: applicationForm.fio.value.trim(),
-                birthDate: applicationForm.birthDate.value,
-                gender: applicationForm.gender.value,
                 phone: applicationForm.phone.value.trim(),
-                email: applicationForm.email.value.trim(),
-                diagnosis: applicationForm.diagnosis.value.trim(),
-                consent: applicationForm.consent.checked ? 'Да' : ''
-            };
-
-            let valid = true;
-            fields.forEach((name) => {
-                const el = applicationForm.elements[name];
-                const ok = Boolean(data[name]);
-                markValidity(el, ok);
-                if (!ok) valid = false;
+                consent: applicationForm.consent.checked,
+                source: 'application'
+            }, {
+                statusEl: applicationStatus,
+                submitBtn: applicationSubmit,
+                form: applicationForm,
+                fieldNames: ['fio', 'phone']
             });
+        });
+    }
 
-            const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email);
-            markValidity(applicationForm.email, emailOk);
-            if (!emailOk) valid = false;
+    // ---------- Виджет «Перезвоните мне» ----------
+    const callbackWidget = document.getElementById('callbackWidget');
+    const callbackFab = document.getElementById('callbackFab');
+    const callbackPanel = document.getElementById('callbackPanel');
+    const callbackClose = document.getElementById('callbackClose');
+    const callbackForm = document.getElementById('callbackForm');
+    const callbackStatus = document.getElementById('callbackStatus');
+    const callbackSubmit = document.getElementById('callbackSubmit');
 
-            markValidity(applicationForm.consent, applicationForm.consent.checked);
-            if (!applicationForm.consent.checked) valid = false;
+    if (callbackWidget && callbackFab && callbackPanel) {
+        function openCallback() {
+            callbackPanel.hidden = false;
+            callbackWidget.classList.add('is-open');
+            callbackFab.setAttribute('aria-expanded', 'true');
+            const nameInput = document.getElementById('cbName');
+            if (nameInput) nameInput.focus();
+        }
 
-            if (!valid) {
-                setStatus('Проверьте, пожалуйста, заполнение всех обязательных полей.', 'is-error');
-                return;
-            }
+        function closeCallback() {
+            callbackPanel.hidden = true;
+            callbackWidget.classList.remove('is-open');
+            callbackFab.setAttribute('aria-expanded', 'false');
+        }
 
-            if (!APPLICATION_FORM_SCRIPT_URL) {
-                setStatus('Форма пока не подключена к таблице. Сообщите администратору сайта.', 'is-error');
-                return;
-            }
+        callbackFab.addEventListener('click', () => {
+            if (callbackWidget.classList.contains('is-open')) closeCallback();
+            else openCallback();
+        });
 
-            applicationSubmit.disabled = true;
-            setStatus('Отправляем заявку…', null);
+        if (callbackClose) callbackClose.addEventListener('click', closeCallback);
 
-            try {
-                const body = new URLSearchParams(data);
-
-                await fetch(APPLICATION_FORM_SCRIPT_URL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'
-                    },
-                    body: body.toString()
-                });
-
-                applicationForm.reset();
-                fields.forEach((name) => markValidity(applicationForm.elements[name], true));
-                markValidity(applicationForm.consent, true);
-                setStatus('Заявка отправлена. Мы свяжемся с Вами в ближайшее время.', 'is-success');
-            } catch (err) {
-                setStatus('Не удалось отправить заявку. Попробуйте ещё раз или позвоните нам.', 'is-error');
-            } finally {
-                applicationSubmit.disabled = false;
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && callbackWidget.classList.contains('is-open')) {
+                closeCallback();
             }
         });
+
+        // Лёгкое напоминание через 25 сек, если ещё не открывали
+        window.setTimeout(() => {
+            if (!callbackWidget.classList.contains('is-open')) {
+                callbackFab.classList.add('is-pulse');
+            }
+        }, 25000);
+
+        if (callbackForm && callbackStatus && callbackSubmit) {
+            callbackForm.addEventListener('submit', async (event) => {
+                event.preventDefault();
+                const ok = await submitLead({
+                    fio: callbackForm.fio.value.trim(),
+                    phone: callbackForm.phone.value.trim(),
+                    consent: callbackForm.consent.checked,
+                    source: 'callback'
+                }, {
+                    statusEl: callbackStatus,
+                    submitBtn: callbackSubmit,
+                    form: callbackForm,
+                    fieldNames: ['fio', 'phone']
+                });
+                if (ok) {
+                    window.setTimeout(closeCallback, 2200);
+                }
+            });
+        }
     }
 })();

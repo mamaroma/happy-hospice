@@ -27,7 +27,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="assets/css/style.css?v=10">
+    <link rel="stylesheet" href="assets/css/style.css?v=12">
 </head>
 <body>
 
@@ -235,14 +235,6 @@
 
                 <div class="leader-card reveal">
                     <div class="leader-photo">
-                        <img src="assets/img/leaders/konstantin.jpg" alt="Константин" class="leader-photo-konstantin">
-                    </div>
-                    <h3 class="leader-name">Константин</h3>
-                    <div class="leader-role">Руководитель</div>
-                </div>
-
-                <div class="leader-card reveal">
-                    <div class="leader-photo">
                         <img src="assets/img/leaders/natalya.jpg" alt="Наталья Викторовна" class="leader-photo-natalya">
                     </div>
                     <h3 class="leader-name">Наталья Викторовна</h3>
@@ -275,9 +267,6 @@
                 <div class="qual-item" data-index="7"><img src="assets/img/qualification/diploma-08.jpg" alt="Диплом 8" loading="lazy"></div>
                 <div class="qual-item" data-index="8"><img src="assets/img/qualification/diploma-09.jpg" alt="Диплом 9" loading="lazy"></div>
                 <div class="qual-item" data-index="9"><img src="assets/img/qualification/diploma-10.jpg" alt="Диплом 10" loading="lazy"></div>
-                <div class="qual-item" data-index="10"><img src="assets/img/qualification/diploma-11.png" alt="Диплом 11" loading="lazy"></div>
-                <div class="qual-item" data-index="11"><img src="assets/img/qualification/diploma-12.png" alt="Диплом 12" loading="lazy"></div>
-                <div class="qual-item" data-index="12"><img src="assets/img/qualification/diploma-13.png" alt="Диплом 13" loading="lazy"></div>
             </div>
         </div>
     </section>
@@ -310,32 +299,18 @@
         <div class="container">
             <div class="section-header reveal">
                 <span class="section-eyebrow">Оставить заявку</span>
-                <h2 class="section-title">Заявка на размещение</h2>
+                <h2 class="section-title">Перезвоним и ответим на вопросы</h2>
                 <div class="divider"><span class="divider-dot"></span></div>
                 <p class="section-subtitle">
-                    Заполните форму — мы свяжемся с Вами, чтобы уточнить детали и подобрать подходящие условия.
+                    Оставьте имя и телефон — мы перезвоним, уточним детали и подберём подходящие условия размещения.
                 </p>
             </div>
 
             <form class="application-form reveal" id="applicationForm" novalidate>
-                <div class="form-grid">
-                    <div class="form-field form-field--full">
-                        <label for="appFio">ФИО подопечного <span aria-hidden="true">*</span></label>
-                        <input type="text" id="appFio" name="fio" autocomplete="name" required placeholder="Иванов Иван Иванович">
-                    </div>
-
+                <div class="form-grid form-grid--simple">
                     <div class="form-field">
-                        <label for="appBirthDate">Дата рождения <span aria-hidden="true">*</span></label>
-                        <input type="date" id="appBirthDate" name="birthDate" required>
-                    </div>
-
-                    <div class="form-field">
-                        <label for="appGender">Пол <span aria-hidden="true">*</span></label>
-                        <select id="appGender" name="gender" required>
-                            <option value="" disabled selected>Выберите</option>
-                            <option value="Женский">Женский</option>
-                            <option value="Мужской">Мужской</option>
-                        </select>
+                        <label for="appFio">Ваше имя <span aria-hidden="true">*</span></label>
+                        <input type="text" id="appFio" name="fio" autocomplete="name" required placeholder="Как к Вам обращаться">
                     </div>
 
                     <div class="form-field">
@@ -343,27 +318,17 @@
                         <input type="tel" id="appPhone" name="phone" autocomplete="tel" required placeholder="+7 (900) 000-00-00">
                     </div>
 
-                    <div class="form-field">
-                        <label for="appEmail">Электронная почта <span aria-hidden="true">*</span></label>
-                        <input type="email" id="appEmail" name="email" autocomplete="email" required placeholder="name@example.com">
-                    </div>
-
-                    <div class="form-field form-field--full">
-                        <label for="appDiagnosis">Диагноз <span aria-hidden="true">*</span></label>
-                        <textarea id="appDiagnosis" name="diagnosis" rows="4" required placeholder="Кратко укажите диагноз или особенности состояния"></textarea>
-                    </div>
-
                     <div class="form-field form-field--full form-consent">
                         <label class="form-checkbox">
                             <input type="checkbox" id="appConsent" name="consent" required>
-                            <span>Согласен(на) на обработку персональных данных для рассмотрения заявки <span aria-hidden="true">*</span></span>
+                            <span>Согласен(на) на обработку персональных данных и обратный звонок <span aria-hidden="true">*</span></span>
                         </label>
                     </div>
                 </div>
 
                 <div class="form-actions">
                     <button type="submit" class="form-submit" id="applicationSubmit">
-                        Отправить заявку
+                        Жду звонка
                     </button>
                     <p class="form-status" id="applicationStatus" role="status" aria-live="polite"></p>
                 </div>
@@ -399,18 +364,12 @@
                             Также доступны мессенджеры:
                         </span>
                         <div class="messengers">
-                            <span class="messenger messenger-tg" title="Telegram">
-                                <span class="messenger-icon">
-                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
-                                </span>
-                                Telegram
-                            </span>
-                            <span class="messenger messenger-wa" title="WhatsApp">
+                            <a class="messenger messenger-wa" href="https://wa.me/79112977937" target="_blank" rel="noopener" title="WhatsApp">
                                 <span class="messenger-icon">
                                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                                 </span>
                                 WhatsApp
-                            </span>
+                            </a>
                             <a class="messenger messenger-max" href="https://max.ru/join/Lt5gZUsIMK9uqVGU-sMPYlMTgOvsBtxUd-uZ6PDmVcQ" target="_blank" rel="noopener" title="MAX">
                                 <span class="messenger-icon">
                                     <img src="assets/img/logo-max.png" alt="">
@@ -494,6 +453,43 @@
         </div>
     </section>
 
+    <div class="callback-widget" id="callbackWidget">
+        <div class="callback-panel" id="callbackPanel" hidden>
+            <button type="button" class="callback-panel-close" id="callbackClose" aria-label="Закрыть">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+            <h3 class="callback-panel-title">Перезвоните мне</h3>
+            <p class="callback-panel-text">Оставьте телефон — перезвоним в рабочее время и расскажем об условиях.</p>
+            <form id="callbackForm" novalidate>
+                <div class="form-field">
+                    <label for="cbName">Имя <span aria-hidden="true">*</span></label>
+                    <input type="text" id="cbName" name="fio" autocomplete="name" required placeholder="Как к Вам обращаться">
+                </div>
+                <div class="form-field">
+                    <label for="cbPhone">Телефон <span aria-hidden="true">*</span></label>
+                    <input type="tel" id="cbPhone" name="phone" autocomplete="tel" required placeholder="+7 (900) 000-00-00">
+                </div>
+                <div class="form-field form-consent">
+                    <label class="form-checkbox">
+                        <input type="checkbox" id="cbConsent" name="consent" required>
+                        <span>Согласен(на) на обработку данных и звонок <span aria-hidden="true">*</span></span>
+                    </label>
+                </div>
+                <button type="submit" class="form-submit callback-submit" id="callbackSubmit">Жду звонка</button>
+                <p class="form-status" id="callbackStatus" role="status" aria-live="polite"></p>
+            </form>
+        </div>
+        <button type="button" class="callback-fab" id="callbackFab" aria-expanded="false" aria-controls="callbackPanel">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.68 2.34a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.74.32 1.53.55 2.34.68A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            Позвонить
+        </button>
+    </div>
+
     <a href="novosti.html" class="news-fab">Наши новости</a>
 
     <!-- FOOTER -->
@@ -509,6 +505,6 @@
         </div>
     </footer>
 
-    <script src="assets/js/script.js?v=4"></script>
+    <script src="assets/js/script.js?v=5"></script>
 </body>
 </html>
