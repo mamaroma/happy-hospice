@@ -117,10 +117,10 @@ img {
 }
 
 .brand-logo {
-    width: min(280px, 52vw);
-    height: auto;
+    width: auto;
+    height: 58px;
     max-width: none;
-    border-radius: 16px;
+    border-radius: 10px;
     object-fit: contain;
     box-shadow: none;
     border: none;
@@ -804,10 +804,10 @@ a.messenger:hover {
 }
 
 .footer-brand img {
-    width: 220px;
-    height: auto;
+    width: auto;
+    height: 52px;
     max-width: none;
-    border-radius: 14px;
+    border-radius: 10px;
     object-fit: contain;
 }
 
@@ -1188,7 +1188,7 @@ a.messenger:hover {
     }
 
     .brand-text { display: none; }
-    .brand-logo { width: min(168px, 48vw); border-radius: 12px; }
+    .brand-logo { height: 46px; border-radius: 8px; }
 
     .features {
         grid-template-columns: 1fr;
