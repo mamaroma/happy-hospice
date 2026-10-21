@@ -1,5 +1,5 @@
 /**
- * Пансионат «Счастье» — приём заявок в Google Sheets
+ * Пансионат «Забота и Уют» — приём заявок в Google Sheets
  *
  * Настройка:
  * 1. Создайте Google Таблицу.
@@ -41,7 +41,7 @@ function doPost(e) {
 
 function doGet() {
   return ContentService
-    .createTextOutput('OK: приём заявок пансионата «Счастье» работает.')
+    .createTextOutput('OK: приём заявок пансионата «Забота и Уют» работает.')
     .setMimeType(ContentService.MimeType.TEXT);
 }
 

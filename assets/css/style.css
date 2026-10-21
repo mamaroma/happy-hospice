@@ -1,27 +1,30 @@
 /* ============================================
-   Пансионат «Счастье» — элегантные стили
+   Пансионат «Забота и Уют» — элегантные стили
    ============================================ */
 
 :root {
-    --bg-cream: #FAF7F2;
-    --bg-soft: #F5EFE5;
-    --bg-card: #FFFFFF;
-    --bg-overlay: rgba(61, 46, 31, 0.55);
+    --bg-cream: #FBF4EC;
+    --bg-soft: #F6E6D6;
+    --bg-card: #FFF9F4;
+    --bg-overlay: rgba(92, 58, 46, 0.5);
 
-    --accent: #B89968;
-    --accent-dark: #9C7E51;
-    --accent-light: #D4B98A;
-    --accent-soft: #EFE4D0;
+    --accent: #C4784A;
+    --accent-dark: #8C4A32;
+    --accent-light: #E0A07A;
+    --accent-soft: #F3DCC8;
 
-    --text-dark: #3D2E1F;
-    --text-body: #4A4036;
-    --text-muted: #8B7E6F;
+    --sage: #7D8B6A;
+    --sage-dark: #5E6B50;
+
+    --text-dark: #5C3A2E;
+    --text-body: #6B4E42;
+    --text-muted: #9A7B6A;
     --text-light: #FFFFFF;
 
-    --border: #E8DFD0;
-    --shadow-sm: 0 2px 8px rgba(61, 46, 31, 0.06);
-    --shadow-md: 0 8px 24px rgba(61, 46, 31, 0.08);
-    --shadow-lg: 0 16px 40px rgba(61, 46, 31, 0.12);
+    --border: #E8D2C0;
+    --shadow-sm: 0 2px 8px rgba(140, 74, 50, 0.06);
+    --shadow-md: 0 8px 24px rgba(140, 74, 50, 0.08);
+    --shadow-lg: 0 16px 40px rgba(140, 74, 50, 0.12);
 
     --radius-sm: 8px;
     --radius-md: 14px;
@@ -89,7 +92,7 @@ img {
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(250, 247, 242, 0.95);
+    background: rgba(251, 244, 236, 0.94);
     backdrop-filter: saturate(180%) blur(12px);
     -webkit-backdrop-filter: saturate(180%) blur(12px);
     border-bottom: 1px solid var(--border);
@@ -114,18 +117,18 @@ img {
 }
 
 .brand-logo {
-    width: 56px;
-    height: 56px;
-    border-radius: var(--radius-full);
-    object-fit: cover;
-    box-shadow: var(--shadow-sm);
-    border: 2px solid var(--accent-soft);
+    width: auto;
+    height: 76px;
+    max-width: 240px;
+    border-radius: 18px;
+    object-fit: contain;
+    box-shadow: none;
+    border: none;
+    background: transparent;
 }
 
 .brand-text {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.1;
+    display: none;
 }
 
 .brand-name {
@@ -137,11 +140,7 @@ img {
 }
 
 .brand-tagline {
-    font-size: 12px;
-    color: var(--text-muted);
-    letter-spacing: 1.2px;
-    text-transform: uppercase;
-    margin-top: 3px;
+    display: none;
 }
 
 .nav {
@@ -226,8 +225,8 @@ img {
     position: absolute;
     inset: 0;
     background-image:
-        radial-gradient(circle at 15% 80%, rgba(212, 185, 138, 0.18) 0%, transparent 40%),
-        radial-gradient(circle at 85% 20%, rgba(212, 185, 138, 0.18) 0%, transparent 40%);
+        radial-gradient(circle at 12% 85%, rgba(125, 139, 106, 0.18) 0%, transparent 42%),
+        radial-gradient(circle at 88% 18%, rgba(196, 120, 74, 0.16) 0%, transparent 40%);
     pointer-events: none;
 }
 
@@ -281,7 +280,7 @@ img {
     border-radius: var(--radius-full);
     font-weight: 600;
     font-size: 16px;
-    box-shadow: 0 8px 24px rgba(184, 153, 104, 0.3);
+    box-shadow: 0 8px 24px rgba(166, 93, 63, 0.28);
     transition: all var(--transition);
 }
 
@@ -289,7 +288,7 @@ img {
     background: var(--accent-dark);
     color: var(--text-light);
     transform: translateY(-2px);
-    box-shadow: 0 12px 32px rgba(184, 153, 104, 0.4);
+    box-shadow: 0 12px 32px rgba(166, 93, 63, 0.36);
 }
 
 /* ============================================
@@ -780,9 +779,9 @@ a.messenger:hover {
    FOOTER
    ============================================ */
 .footer {
-    background: var(--text-dark);
-    color: rgba(255, 255, 255, 0.75);
-    padding: 50px 0 30px;
+    background: #E8CDB8;
+    color: var(--text-body);
+    padding: 36px 0 28px;
 }
 
 .footer-inner {
@@ -800,22 +799,20 @@ a.messenger:hover {
 }
 
 .footer-brand img {
-    width: 48px;
-    height: 48px;
-    border-radius: var(--radius-full);
-    object-fit: cover;
+    width: auto;
+    height: 72px;
+    max-width: 220px;
+    border-radius: 16px;
+    object-fit: contain;
 }
 
 .footer-brand-text {
-    font-family: 'Playfair Display', serif;
-    font-size: 20px;
-    color: white;
-    font-weight: 600;
+    display: none;
 }
 
 .footer-copy {
     font-size: 14px;
-    color: rgba(255, 255, 255, 0.55);
+    color: var(--text-muted);
 }
 
 .footer-phone {
@@ -1185,9 +1182,8 @@ a.messenger:hover {
         padding: 60px 0;
     }
 
-    .brand-tagline { display: none; }
-    .brand-logo { width: 44px; height: 44px; }
-    .brand-name { font-size: 18px; }
+    .brand-text { display: none; }
+    .brand-logo { height: 56px; max-width: 150px; border-radius: 12px; }
 
     .features {
         grid-template-columns: 1fr;
@@ -1357,13 +1353,13 @@ a.messenger:hover {
     border-radius: var(--radius-full);
     text-decoration: none;
     transition: background var(--transition), box-shadow var(--transition), transform var(--transition);
-    box-shadow: 0 4px 14px rgba(184, 153, 104, 0.35);
+    box-shadow: 0 4px 14px rgba(166, 93, 63, 0.28);
     white-space: nowrap;
 }
 
 .download-btn:hover {
     background: var(--accent-dark);
-    box-shadow: 0 6px 20px rgba(184, 153, 104, 0.45);
+    box-shadow: 0 6px 20px rgba(166, 93, 63, 0.36);
     transform: translateY(-1px);
 }
 
@@ -1452,7 +1448,7 @@ a.messenger:hover {
     outline: none;
     border-color: var(--accent);
     background: #fff;
-    box-shadow: 0 0 0 3px rgba(184, 153, 104, 0.18);
+    box-shadow: 0 0 0 3px rgba(196, 120, 74, 0.2);
 }
 
 .form-field textarea {
@@ -1510,13 +1506,13 @@ a.messenger:hover {
     font-size: 15px;
     font-weight: 600;
     cursor: pointer;
-    box-shadow: 0 4px 14px rgba(184, 153, 104, 0.35);
+    box-shadow: 0 4px 14px rgba(166, 93, 63, 0.28);
     transition: background var(--transition), box-shadow var(--transition), transform var(--transition), opacity var(--transition);
 }
 
 .form-submit:hover:not(:disabled) {
     background: var(--accent-dark);
-    box-shadow: 0 6px 20px rgba(184, 153, 104, 0.45);
+    box-shadow: 0 6px 20px rgba(166, 93, 63, 0.36);
     transform: translateY(-1px);
 }
 
@@ -1694,11 +1690,11 @@ a.messenger:hover {
     align-items: center;
     justify-content: center;
     padding: 12px 20px;
-    background: #76558F;
+    background: var(--sage);
     color: #fff;
     border: none;
     border-radius: var(--radius-full);
-    box-shadow: 0 10px 28px rgba(118, 85, 143, 0.35);
+    box-shadow: 0 10px 28px rgba(94, 107, 80, 0.28);
     font-size: 14px;
     font-weight: 600;
     text-decoration: none;
@@ -1707,9 +1703,9 @@ a.messenger:hover {
 
 .news-fab:hover {
     color: #fff;
-    background: #624775;
+    background: var(--sage-dark);
     transform: translateY(-2px);
-    box-shadow: 0 14px 32px rgba(118, 85, 143, 0.45);
+    box-shadow: 0 14px 32px rgba(94, 107, 80, 0.36);
 }
 
 @media (max-width: 600px) {
@@ -1850,21 +1846,21 @@ a.messenger:hover {
     align-items: center;
     justify-content: center;
     padding: 12px 24px;
-    background: #76558F;
+    background: var(--sage);
     color: #fff;
     border-radius: var(--radius-full);
     font-size: 15px;
     font-weight: 600;
     text-decoration: none;
-    box-shadow: 0 8px 20px rgba(118, 85, 143, 0.28);
+    box-shadow: 0 8px 20px rgba(94, 107, 80, 0.28);
     transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
 }
 
 .news-subscribe-btn:hover {
-    background: #624775;
+    background: var(--sage-dark);
     color: #fff;
     transform: translateY(-1px);
-    box-shadow: 0 12px 26px rgba(118, 85, 143, 0.38);
+    box-shadow: 0 12px 26px rgba(94, 107, 80, 0.34);
 }
 
 .news-empty {
