@@ -481,6 +481,55 @@ img {
     height: 18px;
 }
 
+.location-card--anniversary {
+    border: 2px solid var(--accent-dark);
+    box-shadow:
+        0 0 0 4px var(--accent-soft),
+        0 0 0 6px var(--accent),
+        var(--shadow-md);
+}
+
+.location-card--anniversary:hover {
+    box-shadow:
+        0 0 0 4px var(--accent-soft),
+        0 0 0 6px var(--accent),
+        var(--shadow-lg);
+}
+
+.anniversary-note {
+    padding: 16px 24px 14px;
+    background:
+        linear-gradient(180deg, #FBF6EF 0%, var(--accent-soft) 100%);
+    border-bottom: 1px solid var(--border);
+}
+
+.anniversary-year {
+    display: inline-block;
+    margin-bottom: 8px;
+    padding: 5px 12px;
+    border-radius: var(--radius-full);
+    background: var(--accent-dark);
+    color: var(--bg-card);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+}
+
+.anniversary-offer {
+    color: var(--text-dark);
+    font-size: 15px;
+    line-height: 1.45;
+}
+
+.anniversary-offer strong {
+    color: var(--accent-dark);
+    font-weight: 700;
+}
+
+.location-card--anniversary .location-card-body {
+    padding-top: 22px;
+}
+
 /* ============================================
    FEATURES (advantages)
    ============================================ */
@@ -791,28 +840,10 @@ a.messenger:hover {
 
 .footer-inner {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     gap: 30px;
     flex-wrap: wrap;
-}
-
-.footer-brand {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-}
-
-.footer-brand img {
-    width: auto;
-    height: 52px;
-    max-width: none;
-    border-radius: 10px;
-    object-fit: contain;
-}
-
-.footer-brand-text {
-    display: none;
 }
 
 .footer-copy {
@@ -1223,6 +1254,7 @@ a.messenger:hover {
 
     .footer-inner {
         flex-direction: column;
+        justify-content: center;
         text-align: center;
     }
 }
